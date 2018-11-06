@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace FizzBuzz
 {
@@ -6,35 +8,63 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
-            for (var i = 1; i <= 1000; i++)
+            for (var i = 1; i <= 3315; i++)
             {
-                var response = "";
+                IList<string> responses = new List<string>();
                 if (i % 3 == 0)
                 {
-                    response += "Fizz";
+                    responses.Add("Fizz");
+                }
+
+                if (i % 13 == 0)
+                {
+                    responses.Add("Fezz");
                 }
 
                 if (i % 5 == 0)
                 {
-                    response += "Buzz";
+                    responses.Add("Buzz");
                 }
 
                 if (i % 7 == 0)
                 {
-                    response += "Bang";
+                    responses.Add("Bang");
                 }
 
                 if (i % 11 == 0)
                 {
-                    Console.WriteLine("Bong");
-                    continue;
+                    responses.Clear();
+                    if (i % 13 == 0)
+                    {
+                        responses.Add("Fezz");
+                    }
+                    responses.Add("Bong");
                 }
 
-                if (response == "")
+                if (responses.Count == 0)
                 {
-                    response = i.ToString();
+                    Console.WriteLine(i);
                 }
-                Console.WriteLine(response);
+                else
+                {
+                    var response = "";
+                    if (i % 17 == 0)
+                    {
+                        for (var x = responses.Count - 1; x >= 0; x--)
+                        {
+                            response += responses[x];
+                        }
+                    }
+                    else
+                    {
+                        for (var x = 0; x < responses.Count; x++)
+                        {
+                            response += responses[x];
+                        }
+                    }
+                    
+                    Console.WriteLine(response);
+                }
             }
         }
     }
