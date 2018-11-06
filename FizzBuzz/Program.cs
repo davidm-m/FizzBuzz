@@ -8,7 +8,14 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
-            for (var i = 1; i <= 3315; i++)
+            Console.Write("Enter the number you want to run up to: ");
+            var inputStr = Console.ReadLine();
+            if (!int.TryParse(inputStr, out var inputNum) || inputNum < 1)
+            {
+                Console.WriteLine("Input invalid, defaulting to 100");
+                inputNum = 100;
+            }
+            for (var i = 1; i <= inputNum; i++)
             {
                 IList<string> responses = new List<string>();
                 if (i % 3 == 0)
