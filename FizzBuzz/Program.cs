@@ -57,9 +57,9 @@ namespace FizzBuzz
                     }
                     else
                     {
-                        for (var x = 0; x < responses.Count; x++)
+                        foreach (var t in responses)
                         {
-                            response += responses[x];
+                            response += t;
                         }
                     }
                     
